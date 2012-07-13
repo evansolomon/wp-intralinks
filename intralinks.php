@@ -3,7 +3,7 @@
 /*
 Plugin Name: Intralinks
 Description: Links between posts
-Version: 1.0
+Version: 1.01
 Author: Evan Solomon
 Author URI: http://evansolomon.me
 License: GPLv2 or later
