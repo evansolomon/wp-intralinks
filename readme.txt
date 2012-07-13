@@ -6,8 +6,7 @@ Tested up to: 3.4
 Stable tag: 1.0
 License: GPLv2 or later
 
-Shows the links between posts within a WordPress site.  When you're reading one post, Intralinks can show you the other posts that have linked there.
-
+Shows links between posts within a WordPress site.  When you're reading one post, Intralinks can show you the other posts that have linked there.
 == Description ==
 
 At Automattic we use lots of internal WordPress sites to do everything from manage projects to announce new hires to talk about video games.  Among all of those sites, we have lots of internals links.  I wanted to use those links to help people (me) find related conversations faster.  Thus, Intralinks was born.
