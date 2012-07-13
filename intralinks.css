@@ -1,0 +1,141 @@
+/* Wrapper
+=============================================== */
+.intralinks {
+	margin: 15px 0 0 0;
+}
+
+/* Link and Date display
+=============================================== */
+
+/* Title */
+#content p.intralinks-count, 
+.intralinks-count {
+	background: url('link.png') no-repeat 0 1px;
+	padding: 0 0 0 20px;
+	line-height: 14px;
+	margin-bottom: 10px;
+}
+
+/* Link list items */
+div.sharedaddy li.intralink-to-thread {
+	clear: both;
+	padding: 2px 0 !important;
+}
+
+/* Date */
+.intralink-date {
+	display: inline-block;
+	margin: 4px 4px 0 1px;
+	min-width: 35px;
+
+	font-size: 11px;
+}
+
+/* If the list includes a link from more than a year ago */
+.intralink-dates-with-years .intralink-date {
+	min-width: 67px;
+}
+
+/* Gravatars & Blavatars
+=============================================== */
+
+/* Gravatars */
+#main .intralink-to-thread img.avatar {
+	margin: 0;
+	padding: 0;
+}
+
+/* Mini Blavatars */
+#main .intralink-to-thread img.intralink-blavatar {
+	position: relative;
+	left: -9px;
+	top: 9px;
+	border: 1px #ccc solid;
+	padding: 0;
+	display: inline;
+	vertical-align: baseline;
+}
+
+/* Content Preview
+=============================================== */
+
+/* Content */
+
+div.intralink-content {
+	display: block;
+	clear: both;
+}
+
+.intralink-to-thread div.intralink-content {
+	display: none;
+	margin: 0 0 30px 12px;
+	padding: 0 40px 0 26px;
+	border-left: 2px #CCC solid;
+}
+
+#main div.sharedaddy .intralink-content h1,
+#main div.sharedaddy .intralink-content h2,
+#main div.sharedaddy .intralink-content h3,
+#main div.sharedaddy .intralink-content h4,
+#main div.sharedaddy .intralink-content h5 {
+	width: auto;
+	float: none;
+	margin-top: 15px;
+}
+
+#main .intralink-content ul,
+#main .intralink-content ol {
+	margin: 10px 0 15px 25px;
+}
+
+#main .intralink-content li {
+	list-style-type: square ;		 
+	padding: 3px 0 !important;
+}
+
+/* Links to show content */
+
+.intralink-content-preview {
+	display: inline-block;
+	background: url(preview.png) no-repeat 0 3px;
+
+	text-indent: -1000%;
+	
+	width: 23px;
+	height: 24px;
+	margin: 0 5px 0 0;
+
+	position: relative;
+	top: -3px;
+}
+
+a.intralink-content-preview:hover {
+	background: url(preview.png) no-repeat 0 -35px;
+	border: 0;
+}
+
+/* Hides arrows by default */
+.intralink-to-thread .intralink-content-preview {
+	visibility: hidden;
+}
+
+/* Shows arrows on hover */
+.intralink-to-thread:hover .intralink-content-preview {
+	visibility: visible;
+}
+
+/* Shows up arrow when content is open */
+.intralink-content-preview.preview-open {
+	background-position: -30px 3px;
+	visibility: visible;
+}
+
+.intralink-content-preview.preview-open:hover {
+	background-position: -30px -35px;
+}
+
+/* Adjusts crossposts to align with normal links */
+.intralink-xpost .intralink-date {
+	min-width: 67px;
+	height: 25px;
+}
