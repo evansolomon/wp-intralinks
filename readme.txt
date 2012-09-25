@@ -41,5 +41,9 @@ I originally wrote this to run on WordPress.com with an ElasticSearch index and 
 
 == Changelog ==
 
+= 1.02 =
+* Fix intralinks on pages and any time shortlinks are not available
+* Limit intralinks to published content
+
 = 1.0 =
 * Adapted from WordPress.com
