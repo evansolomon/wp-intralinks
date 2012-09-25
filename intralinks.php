@@ -32,6 +32,9 @@ class WPCOM_Intralinks {
 	public function show_intralinks( $content ) {
 		global $post;
 
+		if ( ! $post )
+			return $content;
+
 		if ( ! apply_filters( 'wpcom_intralinks_show_intralinks', true, $content ) )
 			return $content;
 
@@ -46,6 +49,8 @@ class WPCOM_Intralinks {
 	public function generate_intralinks( $post ) {
 		// Get URL's to query
 		$urls = $this->get_urls( $post );
+		if ( ! $urls )
+			return '';
 
 		// Query for this post's URL's
 		$results = $this->query( $urls );
@@ -95,7 +100,12 @@ class WPCOM_Intralinks {
 		$post_permalink = preg_replace( '/^https?:\/\//', '', get_permalink( $post->ID ) );
 		$post_shortlink = preg_replace( '/^https?:\/\//', '', wp_get_shortlink( $post->ID ) );
 
-		$urls = array( 'permalink' => $post_permalink, 'shortlink' => $post_shortlink );
+		$urls = array();
+		if ( $post_permalink )
+			$urls['permalink'] = $post_permalink;
+
+		if ( $post_shortlink )
+			$urls['shortlink'] = $post_shortlink;
 
 		return apply_filters( 'wpcom_intralinks_get_urls', $urls, $post );
 	}
@@ -111,7 +121,7 @@ class WPCOM_Intralinks {
 			switch_to_blog( $blog['blog_id'] );
 
 			$query = $wpdb->prepare(
-				"SELECT * FROM {$wpdb->posts} WHERE post_content LIKE %s OR post_content LIKE %s ORDER BY post_date ASC",
+				$this->get_query_sql( $urls ),
 				"%{$urls['permalink']}%",
 				"%{$urls['shortlink']}%"
 			);
@@ -123,6 +133,23 @@ class WPCOM_Intralinks {
 		}
 
 		return $results;
+	}
+
+	private function get_query_sql( $urls ) {
+		global $wpdb;
+
+		$select = "SELECT * ";
+		$from   = "FROM {$wpdb->posts}";
+		$where  = "WHERE post_status = 'publish' AND";
+
+		if ( 1 == count( $urls ) )
+			$where .= " post_content LIKE %s";
+		else
+			$where .= " ( post_content LIKE %s OR post_content LIKE %s )";
+
+		$orderby = "ORDER BY post_date ASC";
+
+		return "{$select} {$from} {$where} {$orderby}";
 	}
 
 	private function parse_query_results( $results ) {
